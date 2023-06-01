@@ -59,6 +59,11 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
     }
 
     @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
     public void beginTransaction() {
         EntityTransaction transaction = em.getTransaction();
         if (!transaction.isActive()) {

@@ -19,6 +19,8 @@ public interface BaseEntityService <T extends BaseEntity<ID>, ID extends Seriali
 
     void update(T t);
 
+    long count();
+
     void beginTransaction();
 
     void commitTransaction();

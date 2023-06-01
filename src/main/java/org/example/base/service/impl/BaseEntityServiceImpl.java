@@ -47,6 +47,11 @@ public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializ
     }
 
     @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
     public void beginTransaction() {
 
     }

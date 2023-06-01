@@ -19,6 +19,8 @@ public interface BaseEntityRepository<T extends BaseEntity<ID>, ID extends Seria
 
     void update(T t);
 
+    long count();
+
     void beginTransaction();
 
     void commitTransaction();
