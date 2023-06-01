@@ -1,11 +1,11 @@
-package org.example.base.repository;
+package org.example.base.service;
 
 import org.example.base.domain.BaseEntity;
 
 import java.io.Serializable;
 import java.util.List;
 
-public interface BaseEntityRepository<T extends BaseEntity<ID>, ID extends Serializable> {
+public interface BaseEntityService <T extends BaseEntity<ID>, ID extends Serializable> extends Serializable{
 
     void save(T t);
 
