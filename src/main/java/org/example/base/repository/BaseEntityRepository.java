@@ -2,8 +2,10 @@ package org.example.base.repository;
 
 import org.example.base.domain.BaseEntity;
 
+import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 public interface BaseEntityRepository<T extends BaseEntity<ID>, ID extends Serializable> {
 
@@ -13,7 +15,7 @@ public interface BaseEntityRepository<T extends BaseEntity<ID>, ID extends Seria
 
     void deleteById(ID id);
 
-    T findById(ID id);
+    Optional<T> findById(ID id);
 
     List<T> findAll();
 

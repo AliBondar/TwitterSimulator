@@ -7,10 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 
-public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID extends Serializable> implements BaseEntityRepository<T,ID> {
-
+public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID extends Serializable> implements BaseEntityRepository<T, ID> {
 
     private final EntityManager em;
 
@@ -30,7 +30,7 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
 
     @Override
     public void delete(T t) {
-
+        em.remove(t);
     }
 
     @Override
@@ -44,8 +44,8 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
     }
 
     @Override
-    public T findById(ID id) {
-        return em.find(getEntityClass(), id);
+    public Optional<T> findById(ID id) {
+        return Optional.ofNullable(em.find(getEntityClass(), id));
     }
 
     @Override
@@ -55,7 +55,7 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
 
     @Override
     public void update(T t) {
-
+        em.merge(t);
     }
 
     @Override
