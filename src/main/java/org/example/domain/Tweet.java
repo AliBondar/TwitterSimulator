@@ -5,6 +5,9 @@ import lombok.experimental.FieldDefaults;
 import org.example.base.domain.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,12 +25,15 @@ public class Tweet extends BaseEntity<Long> {
 
     LocalDate localDate;
 
+    @OneToMany
     List<Comment> commentList;
 
+    @OneToMany
     List<Like> likeList;
 
     int numberOfLikes;
 
+    @ManyToOne
     Account account;
 
 
