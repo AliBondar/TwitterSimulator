@@ -1,5 +1,5 @@
 package org.example.domain.enumeration;
 
-public enum UserType {
+public enum AccountType {
     HUMAN, BOT, SPAMMER, BUSINESS
 }

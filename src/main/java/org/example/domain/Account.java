@@ -1,18 +1,35 @@
 package org.example.domain;
 
-import org.example.domain.enumeration.UserType;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import org.example.base.domain.BaseEntity;
+import org.example.domain.enumeration.AccountType;
 
-public class Account {
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Email;
 
-    private String username;
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Account extends BaseEntity<Long> {
 
-    private String password;
+    String username;
 
-    private String email;
+    String password;
 
-    private User user;
+    @Email
+    String email;
 
-    private UserType userType;
+    @ManyToOne
+    User user;
 
-    private boolean hasBlueTick;
+    @Enumerated
+    AccountType accountType;
+
+    boolean hasBlueTick;
 }

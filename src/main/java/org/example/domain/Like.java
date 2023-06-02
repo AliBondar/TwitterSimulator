@@ -1,10 +1,23 @@
 package org.example.domain;
 
-public class Like {
 
-    private Account account;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import org.example.base.domain.BaseEntity;
 
-    private Tweet tweet;
+import javax.persistence.Entity;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class Like extends BaseEntity<Long> {
+
+    Account account;
+
+    Tweet tweet;
 
 
 }
