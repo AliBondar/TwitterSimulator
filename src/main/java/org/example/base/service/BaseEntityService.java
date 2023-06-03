@@ -22,10 +22,4 @@ public interface BaseEntityService <T extends BaseEntity<ID>, ID extends Seriali
 
     long count();
 
-    void beginTransaction();
-
-    void commitTransaction();
-
-    void rollbackTransaction();
-
 }
