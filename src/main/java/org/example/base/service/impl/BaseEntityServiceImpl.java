@@ -4,46 +4,70 @@ import org.example.base.domain.BaseEntity;
 import org.example.base.repository.BaseEntityRepository;
 import org.example.base.service.BaseEntityService;
 
+import javax.persistence.EntityTransaction;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
-public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializable, R extends BaseEntityRepository<T, ID>>
+public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializable, REPOSITORY extends BaseEntityRepository<T, ID>>
         implements BaseEntityService<T, ID> {
 
-    private final R repository;
+    private final REPOSITORY repository;
 
-    public BaseEntityServiceImpl(R repository) {
+    public BaseEntityServiceImpl(REPOSITORY repository) {
         this.repository = repository;
     }
 
     @Override
     public void save(T t) {
-
+        EntityTransaction transaction = repository.getEntityManager().getTransaction();
+        transaction.begin();
+        repository.save(t);
+        transaction.commit();
     }
 
     @Override
     public void delete(T t) {
-
+        EntityTransaction transaction = repository.getEntityManager().getTransaction();
+        transaction.begin();
+        repository.delete(t);
+        transaction.commit();
     }
 
+
+    // it may have some problems
     @Override
     public void deleteById(ID id) {
-
+        EntityTransaction transaction = repository.getEntityManager().getTransaction();
+        transaction.begin();
+        repository.delete(repository.findById(id).get());
+        transaction.commit();
     }
 
     @Override
-    public T findById(ID id) {
-        return null;
+    public Optional<T> findById(ID id) {
+        EntityTransaction transaction = repository.getEntityManager().getTransaction();
+        transaction.begin();
+        Optional<T> optional = repository.findById(id);
+        transaction.commit();
+        return optional;
     }
 
     @Override
     public List<T> findAll() {
-        return null;
+        EntityTransaction transaction = repository.getEntityManager().getTransaction();
+        transaction.begin();
+        List<T> list = repository.findAll();
+        transaction.commit();
+        return list;
     }
 
     @Override
     public void update(T t) {
-
+        EntityTransaction transaction = repository.getEntityManager().getTransaction();
+        transaction.begin();
+        repository.update(t);
+        transaction.commit();
     }
 
     @Override
@@ -51,18 +75,5 @@ public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializ
         return 0;
     }
 
-    @Override
-    public void beginTransaction() {
 
-    }
-
-    @Override
-    public void commitTransaction() {
-
-    }
-
-    @Override
-    public void rollbackTransaction() {
-
-    }
 }

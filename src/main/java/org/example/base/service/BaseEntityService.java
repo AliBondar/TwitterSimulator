@@ -4,6 +4,7 @@ import org.example.base.domain.BaseEntity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 public interface BaseEntityService <T extends BaseEntity<ID>, ID extends Serializable> extends Serializable{
 
@@ -13,7 +14,7 @@ public interface BaseEntityService <T extends BaseEntity<ID>, ID extends Seriali
 
     void deleteById(ID id);
 
-    T findById(ID id);
+    Optional<T> findById(ID id);
 
     List<T> findAll();
 

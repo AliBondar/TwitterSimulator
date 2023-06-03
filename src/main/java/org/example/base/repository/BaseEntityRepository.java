@@ -29,4 +29,6 @@ public interface BaseEntityRepository<T extends BaseEntity<ID>, ID extends Seria
 
     void rollbackTransaction();
 
+    EntityManager getEntityManager();
+
 }

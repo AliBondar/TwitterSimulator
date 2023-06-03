@@ -18,6 +18,10 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
         this.em = em;
     }
 
+    @Override
+    public EntityManager getEntityManager() {
+        return em;
+    }
 
     @Override
     public void save(T t) {
