@@ -1,9 +1,7 @@
 package org.example.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.example.base.domain.BaseEntity;
 
 import javax.persistence.*;
@@ -15,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Comment extends BaseEntity<Long> {
 
     @Column(length = 280)
@@ -28,6 +27,11 @@ public class Comment extends BaseEntity<Long> {
     @OneToMany
     List<Like> likeList;
 
-    int numberOfLikes;
+    Integer numberOfLikes;
 
+    @OneToMany
+    List<Comment> commentList;
+
+    @ManyToOne
+    Tweet tweet;
 }

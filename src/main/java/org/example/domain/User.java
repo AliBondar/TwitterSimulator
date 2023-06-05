@@ -5,9 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.example.base.domain.BaseEntity;
 import org.example.domain.enumeration.Gender;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Setter
@@ -16,19 +14,21 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Table(name = "users")
 public class User extends BaseEntity<Long> {
 
     String firstName;
 
     String lastName;
 
-    int age;
+    Integer age;
 
     String country;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     Gender gender;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+
     List<Account> accountList;
 }

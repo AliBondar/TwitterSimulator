@@ -28,7 +28,7 @@ public class Tweet extends BaseEntity<Long> {
     @OneToMany
     List<Like> likeList;
 
-    int numberOfLikes;
+    Integer numberOfLikes;
 
     @OneToMany
     List<Comment> commentList;

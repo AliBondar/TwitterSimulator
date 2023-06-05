@@ -4,10 +4,9 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.example.base.domain.BaseEntity;
 import org.example.domain.enumeration.AccountType;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Setter
@@ -28,8 +27,8 @@ public class Account extends BaseEntity<Long> {
     @ManyToOne
     User user;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     AccountType accountType;
 
-    boolean hasBlueTick;
+    Boolean hasBlueTick;
 }

@@ -5,9 +5,9 @@ import javax.persistence.Persistence;
 
 public class HibernateUtil {
 
-    private EntityManagerFactory emf;
+    private static EntityManagerFactory emf;
 
-    public EntityManagerFactory getEmf() {
+    public static EntityManagerFactory getEmf() {
         if(emf == null)
             emf = Persistence.createEntityManagerFactory("default");
         return emf;
