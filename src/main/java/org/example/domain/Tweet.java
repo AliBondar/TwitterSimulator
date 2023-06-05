@@ -4,10 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.example.base.domain.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,21 +17,25 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Tweet extends BaseEntity<Long> {
 
-
+    @Column(length = 280)
     String text;
 
-    LocalDate localDate;
+    @ManyToOne
+    Account account;
 
-    @OneToMany
-    List<Comment> commentList;
+    LocalDate localDate;
 
     @OneToMany
     List<Like> likeList;
 
     int numberOfLikes;
 
-    @ManyToOne
-    Account account;
+    @OneToMany
+    List<Comment> commentList;
+
+
+
+
 
 
 }

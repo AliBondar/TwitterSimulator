@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.base.domain.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,6 +17,7 @@ import java.util.List;
 @Entity
 public class Comment extends BaseEntity<Long> {
 
+    @Column(length = 280)
     String text;
 
     @ManyToOne
