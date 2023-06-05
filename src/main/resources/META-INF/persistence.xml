@@ -8,10 +8,10 @@
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.url"
-                value="jdbc:postgresql://localhost:5432/postgres?currentSchema=mk_92_jpa"/>
+                value="jdbc:postgresql://localhost:5432/postgres"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
-      <property name="javax.persistence.jdbc.password" value="12345678"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="javax.persistence.jdbc.password" value="alibon13800926"/>
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
       <property name="hibernate.show_sql" value="true"/>
 
       <property name="hibernate.hikari.minimumIdle" value="5"/>
