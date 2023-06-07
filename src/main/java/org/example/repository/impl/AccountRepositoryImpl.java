@@ -16,7 +16,7 @@ public class AccountRepositoryImpl extends BaseEntityRepositoryImpl<Account, Lon
 
     @Override
     public Class<Account> getEntityClass() {
-        return null;
+        return Account.class;
     }
 
     public EntityManager getEm() {
