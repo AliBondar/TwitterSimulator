@@ -4,12 +4,9 @@ import org.example.domain.*;
 import org.example.domain.enumeration.AccountType;
 import org.example.domain.enumeration.Gender;
 import org.example.repository.AccountRepository;
-import org.example.repository.impl.AccountRepositoryImpl;
-import org.example.repository.impl.UserRepositoryImpl;
-import org.example.service.AccountService;
-import org.example.service.UserService;
-import org.example.service.impl.AccountServiceImpl;
-import org.example.service.impl.UserServiceImpl;
+import org.example.repository.impl.*;
+import org.example.service.*;
+import org.example.service.impl.*;
 import org.example.util.HibernateUtil;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -63,20 +60,29 @@ public class TwitterSimulatorApplication {
 
         AccountService accountService = new AccountServiceImpl(new AccountRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
         UserService userService = new UserServiceImpl(new UserRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
+        TweetService tweetService = new TweetServiceImpl(new TweetRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
+        CommentService commentService = new CommentServiceImpl(new CommentRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
+        LikeService likeService = new LikeServiceImpl(new LikeRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
 
-        EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
-        SessionFactory sessionFactory = (SessionFactory) HibernateUtil.getEmf();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.save(account);
-        session.save(tweet);
-        session.save(tweet1);
-        session.save(like1);
-        session.save(comment);
-        session.getTransaction().commit();
-        session.close();
-        //accountService.save(account);
+//        EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
+//        SessionFactory sessionFactory = (SessionFactory) HibernateUtil.getEmf();
+//        Session session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        session.save(user);
+//        session.save(account);
+//        session.save(tweet);
+//        session.save(tweet1);
+//        session.save(like1);
+//        session.save(comment);
+//        session.getTransaction().commit();
+//        session.close();
+
+        userService.save(user);
+        accountService.save(account);
+        tweetService.save(tweet);
+        tweetService.save(tweet1);
+        likeService.save(like1);
+        commentService.save(comment);
 
     }
 }

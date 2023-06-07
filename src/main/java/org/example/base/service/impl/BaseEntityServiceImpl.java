@@ -3,6 +3,9 @@ package org.example.base.service.impl;
 import org.example.base.domain.BaseEntity;
 import org.example.base.repository.BaseEntityRepository;
 import org.example.base.service.BaseEntityService;
+import org.example.util.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityTransaction;
 import java.io.Serializable;
@@ -40,7 +43,9 @@ public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializ
     public void deleteById(ID id) {
         EntityTransaction transaction = repository.getEntityManager().getTransaction();
         transaction.begin();
-        repository.delete(repository.findById(id).get());
+        if (repository.findById(id).isPresent()){
+            repository.delete(repository.findById(id).get());
+        }
         transaction.commit();
     }
 
@@ -72,7 +77,7 @@ public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializ
 
     @Override
     public long count() {
-        return 0;
+        return repository.count();
     }
 
 

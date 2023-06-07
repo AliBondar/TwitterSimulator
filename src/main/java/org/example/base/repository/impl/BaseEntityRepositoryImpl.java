@@ -5,6 +5,9 @@ import org.example.base.repository.BaseEntityRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -64,7 +67,11 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
 
     @Override
     public long count() {
-        return 0;
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Long> cbQuery = cb.createQuery(long.class);
+        TypedQuery<Long> query = em.createQuery(cbQuery);
+        cbQuery.select(cb.count(cbQuery.from(getEntityClass())));
+        return em.createQuery(cbQuery).getSingleResult();
     }
 
     @Override
