@@ -2,10 +2,11 @@ package org.example.repository.impl;
 
 import org.example.base.repository.impl.BaseEntityRepositoryImpl;
 import org.example.domain.Like;
+import org.example.repository.LikeRepository;
 
 import javax.persistence.EntityManager;
 
-public class LikeRepositoryImpl extends BaseEntityRepositoryImpl<Like, Long> {
+public class LikeRepositoryImpl extends BaseEntityRepositoryImpl<Like, Long> implements LikeRepository {
 
     private final EntityManager em;
 

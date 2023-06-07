@@ -2,10 +2,11 @@ package org.example.repository.impl;
 
 import org.example.base.repository.impl.BaseEntityRepositoryImpl;
 import org.example.domain.Tweet;
+import org.example.repository.TweetRepository;
 
 import javax.persistence.EntityManager;
 
-public class TweetRepositoryImpl extends BaseEntityRepositoryImpl<Tweet, Long> {
+public class TweetRepositoryImpl extends BaseEntityRepositoryImpl<Tweet, Long> implements TweetRepository {
 
     private final EntityManager em;
     public TweetRepositoryImpl(EntityManager em) {

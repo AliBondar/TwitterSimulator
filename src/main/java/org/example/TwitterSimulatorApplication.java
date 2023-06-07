@@ -5,8 +5,11 @@ import org.example.domain.enumeration.AccountType;
 import org.example.domain.enumeration.Gender;
 import org.example.repository.AccountRepository;
 import org.example.repository.impl.AccountRepositoryImpl;
+import org.example.repository.impl.UserRepositoryImpl;
 import org.example.service.AccountService;
+import org.example.service.UserService;
 import org.example.service.impl.AccountServiceImpl;
+import org.example.service.impl.UserServiceImpl;
 import org.example.util.HibernateUtil;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -58,8 +61,10 @@ public class TwitterSimulatorApplication {
         comment.setTweet(tweet);
         comment.setAccount(account);
 
-        //AccountService accountService = new AccountServiceImpl((AccountRepository) new AccountRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
-       // EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
+        AccountService accountService = new AccountServiceImpl(new AccountRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
+        UserService userService = new UserServiceImpl(new UserRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
+
+        EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
         SessionFactory sessionFactory = (SessionFactory) HibernateUtil.getEmf();
         Session session = sessionFactory.openSession();
         session.beginTransaction();

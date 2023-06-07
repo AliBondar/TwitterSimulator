@@ -6,7 +6,7 @@ import org.example.domain.Account;
 import org.example.repository.AccountRepository;
 import org.example.service.AccountService;
 
-public class AccountServiceImpl extends BaseEntityServiceImpl<Account, Long, AccountRepository> implements AccountService {
+public class AccountServiceImpl extends BaseEntityServiceImpl<Account, Long, AccountRepository> implements AccountService{
 
 
     public AccountServiceImpl(AccountRepository repository) {
