@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.domain.Account;
-import org.example.domain.Like;
-import org.example.domain.Tweet;
-import org.example.domain.User;
+import org.example.domain.*;
 import org.example.domain.enumeration.AccountType;
 import org.example.domain.enumeration.Gender;
 import org.example.repository.AccountRepository;
@@ -56,7 +53,10 @@ public class TwitterSimulatorApplication {
         likeList.add(like1);
         like1.setAccount(account);
         like1.setTweet(tweet1);
-        //tweet.setLikeList(likeList);
+        Comment comment = new Comment();
+        comment.setText("that was nice");
+        comment.setTweet(tweet);
+        comment.setAccount(account);
 
         //AccountService accountService = new AccountServiceImpl((AccountRepository) new AccountRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
        // EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
@@ -68,6 +68,7 @@ public class TwitterSimulatorApplication {
         session.save(tweet);
         session.save(tweet1);
         session.save(like1);
+        session.save(comment);
         session.getTransaction().commit();
         session.close();
         //accountService.save(account);

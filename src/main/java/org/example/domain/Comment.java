@@ -24,9 +24,6 @@ public class Comment extends BaseEntity<Long> {
 
     LocalDate localDate;
 
-    @OneToMany
-    List<Like> likeList;
-
     Integer numberOfLikes;
 
     @ManyToOne

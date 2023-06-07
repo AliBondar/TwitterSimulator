@@ -27,9 +27,6 @@ public class Account extends BaseEntity<Long> {
     @Email
     String email;
 
-//    @ManyToOne
-//    User user;
-
     @Enumerated(EnumType.STRING)
     AccountType accountType;
 

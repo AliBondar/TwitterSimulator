@@ -21,19 +21,9 @@ public class Tweet extends BaseEntity<Long> {
     @Column(length = 280)
     String text;
 
-//    @ManyToOne
-//    Account account;
-
     LocalDate localDate;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "tweet_id")
-//    List<Like> likeList = new ArrayList<>();
-
     Integer numberOfLikes;
-
-    @OneToMany
-    List<Tweet> TweetList = new ArrayList<>();
 
 
 }
