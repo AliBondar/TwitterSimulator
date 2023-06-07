@@ -24,5 +24,4 @@ public class Like extends BaseEntity<Long> {
     @ManyToOne
     Tweet tweet;
 
-
 }

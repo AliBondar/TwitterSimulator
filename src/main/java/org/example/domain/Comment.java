@@ -24,8 +24,6 @@ public class Comment extends BaseEntity<Long> {
 
     LocalDate localDate;
 
-    Integer numberOfLikes;
-
     @ManyToOne
     Tweet tweet;
 }
