@@ -6,6 +6,7 @@ import org.example.base.domain.BaseEntity;
 import org.example.domain.enumeration.Gender;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -28,7 +29,7 @@ public class User extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     Gender gender;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-
-    List<Account> accountList;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    List<Account> accountList = new ArrayList<>();
 }

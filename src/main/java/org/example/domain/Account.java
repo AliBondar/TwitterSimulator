@@ -8,6 +8,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -17,6 +19,7 @@ import javax.validation.constraints.Email;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Account extends BaseEntity<Long> {
 
+    @Column(unique = true, nullable = false)
     String username;
 
     String password;
@@ -24,11 +27,15 @@ public class Account extends BaseEntity<Long> {
     @Email
     String email;
 
-    @ManyToOne
-    User user;
+//    @ManyToOne
+//    User user;
 
     @Enumerated(EnumType.STRING)
     AccountType accountType;
 
     Boolean hasBlueTick;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id")
+    List<Tweet> tweetList = new ArrayList<>();
 }

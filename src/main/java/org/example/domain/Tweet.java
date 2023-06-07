@@ -6,6 +6,7 @@ import org.example.base.domain.BaseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,22 +21,19 @@ public class Tweet extends BaseEntity<Long> {
     @Column(length = 280)
     String text;
 
-    @ManyToOne
-    Account account;
+//    @ManyToOne
+//    Account account;
 
     LocalDate localDate;
 
-    @OneToMany
-    List<Like> likeList;
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "tweet_id")
+//    List<Like> likeList = new ArrayList<>();
 
     Integer numberOfLikes;
 
     @OneToMany
-    List<Comment> commentList;
-
-
-
-
+    List<Tweet> TweetList = new ArrayList<>();
 
 
 }

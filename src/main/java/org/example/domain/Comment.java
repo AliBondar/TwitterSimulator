@@ -29,9 +29,6 @@ public class Comment extends BaseEntity<Long> {
 
     Integer numberOfLikes;
 
-    @OneToMany
-    List<Comment> commentList;
-
     @ManyToOne
     Tweet tweet;
 }
