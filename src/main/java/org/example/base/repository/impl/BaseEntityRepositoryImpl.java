@@ -74,6 +74,13 @@ public abstract class BaseEntityRepositoryImpl<T extends BaseEntity<ID>, ID exte
         return em.createQuery(cbQuery).getSingleResult();
     }
 
+    private Integer countLikes() {
+        return em.createQuery(
+                "select count(e) from " + getEntityClass().getSimpleName() + " e",
+                Integer.class
+        ).getSingleResult();
+    }
+
     @Override
     public void beginTransaction() {
         EntityTransaction transaction = em.getTransaction();
