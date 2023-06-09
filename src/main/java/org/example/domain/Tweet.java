@@ -21,6 +21,9 @@ public class Tweet extends BaseEntity<Long> {
     @Column(length = 280)
     String text;
 
+    @ManyToOne
+    Account account;
+
     LocalDate localDate;
 
     Integer numberOfLikes;

@@ -28,7 +28,7 @@ public class TweetRepositoryImpl extends BaseEntityRepositoryImpl<Tweet, Long> i
     @Override
     public List<Tweet> findUser(Long id) {
         String query = """
-                select t from Tweet t where t.id = :id
+                select t from Tweet t where t.account.id = :id
                 """;
         return em.createQuery(query, Tweet.class).setParameter("id" , id).getResultList();
     }
