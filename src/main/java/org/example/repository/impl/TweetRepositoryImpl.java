@@ -1,10 +1,12 @@
 package org.example.repository.impl;
 
 import org.example.base.repository.impl.BaseEntityRepositoryImpl;
+import org.example.domain.Comment;
 import org.example.domain.Tweet;
 import org.example.repository.TweetRepository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class TweetRepositoryImpl extends BaseEntityRepositoryImpl<Tweet, Long> implements TweetRepository {
 
@@ -22,4 +24,13 @@ public class TweetRepositoryImpl extends BaseEntityRepositoryImpl<Tweet, Long> i
     public EntityManager getEm() {
         return em;
     }
+
+    @Override
+    public List<Tweet> findUser(Long id) {
+        String query = """
+                select t from Tweet t where t.id = :id
+                """;
+        return em.createQuery(query, Tweet.class).setParameter("id" , id).getResultList();
+    }
+
 }
