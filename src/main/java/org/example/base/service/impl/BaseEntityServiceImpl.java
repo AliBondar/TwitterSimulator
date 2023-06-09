@@ -60,11 +60,7 @@ public class BaseEntityServiceImpl<T extends BaseEntity<ID>, ID extends Serializ
 
     @Override
     public List<T> findAll() {
-        EntityTransaction transaction = repository.getEntityManager().getTransaction();
-        transaction.begin();
-        List<T> list = repository.findAll();
-        transaction.commit();
-        return list;
+        return repository.findAll();
     }
 
     @Override

@@ -8,4 +8,8 @@ import java.util.Optional;
 
 public interface AccountService extends BaseEntityService<Account, Long> {
 
+    Optional<Account> findUser(String username);
+
+    Optional<Account> findUser(String username, String password);
+
 }
