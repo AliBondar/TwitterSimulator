@@ -62,31 +62,33 @@ public class TwitterSimulatorApplication {
         comment.setTweet(tweet);
         comment.setAccount(account);
 
+        //*******************************
         AccountService accountService = new AccountServiceImpl(new AccountRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
         UserService userService = new UserServiceImpl(new UserRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
         TweetService tweetService = new TweetServiceImpl(new TweetRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
         CommentService commentService = new CommentServiceImpl(new CommentRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
         LikeService likeService = new LikeServiceImpl(new LikeRepositoryImpl(HibernateUtil.getEmf().createEntityManager()));
-
-        EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
-        SessionFactory sessionFactory = (SessionFactory) HibernateUtil.getEmf();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.save(account);
-        session.save(tweet);
-        session.save(tweet1);
-        session.save(like1);
-        session.save(comment);
-        session.getTransaction().commit();
-        session.close();
-
-//        userService.save(user);
-//        accountService.save(account);
+        userService.save(user);
+ //      accountService.save(account);
 //        tweetService.save(tweet);
 //        tweetService.save(tweet1);
 //        likeService.save(like1);
 //        commentService.save(comment);
+
+//        EntityManager entityManager = HibernateUtil.getEmf().createEntityManager();
+//        SessionFactory sessionFactory = (SessionFactory) HibernateUtil.getEmf();
+//        Session session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        session.save(user);
+//        session.save(account);
+//        session.save(tweet);
+//        session.save(tweet1);
+//        session.save(like1);
+//        session.save(comment);
+//        session.getTransaction().commit();
+//        session.close();
+
+
 
     }
 }

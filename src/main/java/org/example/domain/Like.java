@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.example.base.domain.BaseEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,10 +19,10 @@ import javax.persistence.Table;
 @Table(name = "likes")
 public class Like extends BaseEntity<Long> {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Account account;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Tweet tweet;
 
 }

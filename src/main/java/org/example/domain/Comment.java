@@ -24,6 +24,6 @@ public class Comment extends BaseEntity<Long> {
 
     LocalDate localDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Tweet tweet;
 }

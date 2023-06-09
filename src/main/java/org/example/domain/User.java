@@ -29,7 +29,7 @@ public class User extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     Gender gender;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     List<Account> accountList = new ArrayList<>();
 }

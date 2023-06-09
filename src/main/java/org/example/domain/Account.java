@@ -32,7 +32,7 @@ public class Account extends BaseEntity<Long> {
 
     Boolean hasBlueTick;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     List<Tweet> tweetList = new ArrayList<>();
 }
